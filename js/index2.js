@@ -29,12 +29,13 @@ function backClickHandler(e) {
       "animate__slideInRight"
     );
     // sections[index-1].classList.add("animate__slideOutLeft");
-    sections[index - 2].classList.remove(
-      // "animate__animated",
-      "animate__slower",
-      "animate__slideInLeft",
-      "animate__slideOutLeft"
-    );
+    sections[index - 2] &&
+      sections[index - 2].classList.remove(
+        // "animate__animated",
+        "animate__slower",
+        "animate__slideInLeft",
+        "animate__slideOutLeft"
+      );
     // sections[index - 2].classList.add("animate__slideInRight");
   }
   return false;
