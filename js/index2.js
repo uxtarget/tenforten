@@ -75,8 +75,15 @@ function backClickHandler(e) {
   return false;
 }
 
+
+document.querySelectorAll("form").forEach((item) => {
+  item.addEventListener("submit", (e) => {
+    e.preventDefault();
+  });
+});
+
 function clickHandler(e) {
-  e.preventDefault();
+  // e.preventDefault();
   var myForm = e.currentTarget.closest("form");
 
   if (myForm !== null) {

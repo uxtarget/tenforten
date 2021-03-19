@@ -61,9 +61,15 @@ function backClickHandler(e) {
       sections[index - 2].classList.remove("animate__fadeOut");
   }
 }
-function clickHandler(e) {
+
+var myForm = document.getElementById("myForm");
+myForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  var myForm = document.getElementById("myForm");
+});
+
+function clickHandler(e) {
+  // e.preventDefault();
+  // var myForm = document.getElementById("myForm");
   var result = document.getElementById("result");
   var FD = new FormData(myForm);
   var formObject = Object.fromEntries(FD.entries());
@@ -85,3 +91,4 @@ function clickHandler(e) {
     sections[index].classList.add("animate__animated", "animate__fadeIn");
   }
 }
+
