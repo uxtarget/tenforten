@@ -56,25 +56,27 @@ function backClickHandler(e) {
   var target = e.currentTarget;
   var index = target.dataset["index"];
   if (index < sections_total) {
-    sections[index - 1].classList.remove(
-      "animate__animated",
-      "animate__slideInLeft",
-      "animate__slideOutLeft",
-      "animate__slideInRight"
-    );
-    // sections[index-1].classList.add("animate__slideOutLeft");
+    // sections[index - 1].classList.remove(
+    //   "animate__animated",
+    //   "animate__slideInLeft",
+    //   "animate__slideOutLeft",
+    //   "animate__slideInRight"
+    // );
+    // // sections[index-1].classList.add("animate__slideOutLeft");
+    // sections[index - 2] &&
+    //   sections[index - 2].classList.remove(
+    //     // "animate__animated",
+    //     "animate__slower",
+    //     "animate__slideInLeft",
+    //     "animate__slideOutLeft"
+    //   );
+    // // sections[index - 2].classList.add("animate__slideInRight");
+    sections[index - 1].classList.remove("animate__animated","animate__fadeIn");
     sections[index - 2] &&
-      sections[index - 2].classList.remove(
-        // "animate__animated",
-        "animate__slower",
-        "animate__slideInLeft",
-        "animate__slideOutLeft"
-      );
-    // sections[index - 2].classList.add("animate__slideInRight");
+      sections[index - 2].classList.remove("animate__fadeOut");
   }
   return false;
 }
-
 
 document.querySelectorAll("form").forEach((item) => {
   item.addEventListener("submit", (e) => {
@@ -105,12 +107,14 @@ function clickHandler(e) {
   var target = e.currentTarget;
   var index = target.dataset["index"];
   if (index < sections_total) {
-    sections[index - 1].classList.remove("animate__slideInRight");
-    sections[index - 1].classList.add(
-      "animate__animated",
-      "animate__slower",
-      "animate__slideOutLeft"
-    );
-    sections[index].classList.add("animate__animated", "animate__slideInRight");
+    // sections[index - 1].classList.remove("animate__slideInRight");
+    // sections[index - 1].classList.add(
+    //   "animate__animated",
+    //   "animate__slower",
+    //   "animate__slideOutLeft"
+    // );
+    // sections[index].classList.add("animate__animated", "animate__slideInRight");
+    sections[index - 1].classList.add("animate__animated", "animate__fadeOut");
+    sections[index].classList.add("animate__animated", "animate__fadeIn");
   }
 }
