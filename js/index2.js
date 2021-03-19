@@ -2,6 +2,40 @@ var nextBtns = document.querySelectorAll(".next-btn");
 var backBtns = document.querySelectorAll(".back-btn");
 var sections = document.querySelectorAll(".inner");
 var sections_total = 6;
+var formData = {};
+
+var tmpl = (formObject) => {
+  return `<div class="answers">
+      <span class="text-box-label">City</span>
+      <div>
+        <span class="base">${formObject.City}</span>
+      </div>
+    </div>
+    <div class="answers">
+      <span class="text-box-label">State</span>
+      <div>
+        <span class="base">${formObject.State}</span>
+      </div>
+    </div>
+    <div class="answers">
+      <span class="text-box-label">Area of Focus</span>
+      <div>
+        <span class="base">${formObject.projectFocus}</span>
+      </div>
+    </div>
+    <div class="answers">
+      <span class="text-box-label">Project Description</span>
+      <div>
+        <span class="base">${formObject.story}</span>
+      </div>
+    </div>
+    <div class="answers">
+      <span class="text-box-label">Project Name</span>
+      <div>
+        <span class="base">${formObject.projectName}</span>
+      </div>
+    </div>`;
+};
 
 for (var i = 0; i < nextBtns.length; i++) {
   nextBtns[i].addEventListener("click", function (e) {
@@ -42,6 +76,25 @@ function backClickHandler(e) {
 }
 
 function clickHandler(e) {
+  e.preventDefault();
+  var myForm = e.currentTarget.closest("form");
+
+  if (myForm !== null) {
+    var FD = new FormData(myForm);
+    var formObject = Object.fromEntries(FD.entries());
+
+    if (!myForm.checkValidity()) {
+      return false;
+    }
+
+    formData = Object.assign(formData, formObject);
+
+    if (e.currentTarget.id === "captureResult") {
+      var result = document.getElementById("result");
+      result.innerHTML = tmpl(formData);
+    }
+  }
+
   var target = e.currentTarget;
   var index = target.dataset["index"];
   if (index < sections_total) {
@@ -53,5 +106,4 @@ function clickHandler(e) {
     );
     sections[index].classList.add("animate__animated", "animate__slideInRight");
   }
-  return false;
 }
